@@ -4,6 +4,7 @@ import BreezeLabel from "@/Components/InputLabel.vue";
 import BreezeInput from "@/Components/TextInput.vue";
 import BreezeTextArea from "@/Components/Textarea.vue";
 import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
+import FileUpload from "@/Components/FileUpload.vue";
 
 const form = useForm({
   title: "",
@@ -56,6 +57,18 @@ const submit = () => {
                     id="description"
                     class="mt-1 block w-full"
                     v-model="form.description"
+                    autofocus
+                  />
+                  <span className="text-red-600" v-if="form.errors.description">
+                    {{ form.errors.description }}
+                  </span>
+                </div>
+                <div className="mb-4">
+                  <BreezeLabel for="files" value="Files" />
+                  <FileUpload
+                    :allow-multiple="true"
+                    accept="image/*"
+                    v-model="form.files"
                     autofocus
                   />
                   <span className="text-red-600" v-if="form.errors.description">

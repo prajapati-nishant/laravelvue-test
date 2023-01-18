@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/file-upload','App\Http\Controllers\FileUploadController@upload');
+Route::delete('/file-upload','App\Http\Controllers\FileUploadController@remove');
